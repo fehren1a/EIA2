@@ -3,4 +3,4 @@ document.addEventListener('DOMContentLoaded', function () {
     var welcome = "Hallo ";
     document.body.innerHTML = welcome + getname + " :-)";
 });
-//# sourceMappingURL=aufgabe0.js.map
+//# sourceMappingURL=aufgabe0.js.map 
