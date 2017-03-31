@@ -40,9 +40,9 @@ let rice: number = 1;
       
     }
   
-    
-      div.innerText= "" + rice;
-      rice *= 2;
+      rice = Math.pow(2,i);
+      var riceshort: string = rice.toExponential(4);
+      div.textContent= riceshort;
       document.body.appendChild(div);
       }
     

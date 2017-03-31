@@ -4,16 +4,24 @@
 }
 
 body{
-	margin:0;
+	margin-left: 27%;
+	margin-right: 27%;
+}
+
+h1{
+	text-align: center;
+	padding: 0.3em;
 }
 
 div{
-	width:10vmin;
-	height:10vmin;
+	width:11vmin;
+	height:11vmin;
 	float:left;
 	text-align:center;
-	line-height:300px;
+	line-height:11vmin;
 	font-family:Arial;
+	font-size: 0.7em;
+	border: 0.1px solid black;
 }
 
 .black{
