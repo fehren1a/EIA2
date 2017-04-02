@@ -34,6 +34,7 @@ div{
 	color:black;
 }
 
+/* Das Floatingverhalten (left) der Divs soll bereinigt werden */
 .floating{
 	clear:both;
 }
