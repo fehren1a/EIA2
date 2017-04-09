@@ -1,0 +1,48 @@
+/*
+Aufgabe: 3a Sissas Summe
+Name: Jonas Fehrenbach
+Datum: 09.04.2017
+Matrikel: 254667
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	margin-left: 27%;
+	margin-right: 27%;
+}
+
+h1{
+	text-align: center;
+	padding: 0.3em;
+}
+
+div{
+	width:11vmin;
+	height:11vmin;
+	float:left;
+	text-align:center;
+	line-height:11vmin;
+	font-family:Arial;
+	font-size: 0.7em;
+	border: 0.1px solid black;
+}
+
+.black{
+	background-color:black;
+	color:white;
+}
+
+.white{
+	background-color:white;
+	color:black;
+}
+
+.chosen{
+	background-color: green;
+}
