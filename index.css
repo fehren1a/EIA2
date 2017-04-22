@@ -1,0 +1,17 @@
+body {
+	text-align: center;
+	font-size: 1.5em;
+}
+
+hr {
+	width: 40%;
+}
+
+.konzept {
+	color: #4881ea;
+}
+
+a {
+	color: #0b275b;
+	text-decoration: none;
+}
