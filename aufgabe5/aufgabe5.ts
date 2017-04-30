@@ -1,7 +1,7 @@
 /*
 Aufgabe: 5 - Bienenschwarm
 Name: Jonas Fehrenbach
-Datum: 29.04.2017
+Datum: 30.04.2017
 Matrikel: 254667
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
@@ -21,11 +21,11 @@ namespace L5_animation {
 
 
     function init(_event: Event): void {
+       
         console.log("CanvasWindow");
         let canvas: HTMLCanvasElement;
         canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
-
         crc2 = canvas.getContext("2d");
         console.log(crc2);
 
