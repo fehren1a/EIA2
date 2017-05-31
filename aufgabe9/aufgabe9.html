@@ -1,0 +1,77 @@
+<!--
+Aufgabe: 9 - FormElements: Eisdealer
+Name: Jonas Fehrenbach
+Datum: 31.05.2017
+Matrikel: 254667
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>Aufgabe 9 - Eisdealer</title>
+<meta name="description" content="">
+<meta name="author" content="Jonas">
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<script src="aufgabe9.js"></script>
+<link rel="stylesheet" href="aufgabe9.css">
+
+</head>
+<body>
+	<h1>Furtwangens Online Eisdealer</h1>
+	<img src="Eistüte.png">
+
+ <main>
+	<fieldset id="flavours">
+		<legend>Flavours</legend>
+	</fieldset>
+
+	<fieldset>
+		<legend>Cone or Cup?</legend>
+	</fieldset>
+	
+	<fieldset>
+		<legend>Toppings</legend>
+	</fieldset>
+  </main>
+
+ <aside>
+    <fieldset id="shoppingcard">
+		<legend>Shopping card</legend>
+	</fieldset>
+	
+	<fieldset id="delivery">
+		<legend>Delivery Options</legend>
+		<input type="radio" name="Delivery" value="Express" id="radio1" /> <label
+			for="radio1">Express</label> <input type="radio" name="Delivery"
+			value="Standard" id="radio2" /> <label for="radio2">Standard Delivery</label>
+			
+	</fieldset>
+	
+	<fieldset id="address">
+		<legend> Address </legend>
+		First Name 
+		<input type="text" name="FirstName" placeholder="type first name here" required /><br> 
+	    Last Name 
+	    <input type="text" name="LastName" placeholder="type last name here" required /><br> 
+	    Street 
+	    <input type="text" name="Street" placeholder="type streetname here" required /><br>
+		Postal Code 
+		<input type="text" name="PostalCode" pattern="[0-9, A-Z]{5}" placeholder="useRegEx" /><br>
+		Town 
+	    <input type="text" name="Town" placeholder="type townname here" required /><br>
+		Email 
+		<input type="email" name="Email" placeholder="place @ between" /><hr/>
+		<button name="Button" type="button">Send order</button>
+	</fieldset>
+</aside>
+</body>
+</html>
