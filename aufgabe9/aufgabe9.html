@@ -1,12 +1,12 @@
 <!--
 Aufgabe: 9 - FormElements: Eisdealer
 Name: Jonas Fehrenbach
-Datum: 31.05.2017 
+Datum: 04.06.2017 
 Matrikel: 254667
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 -->
- 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,49 +29,68 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 	<h1>Furtwangens Online Eisdealer</h1>
 	<img src="Eistüte.png">
 
- <main>
+	<main> 
+	
+	<!-- Eissorten -->
 	<fieldset id="flavours">
-		<legend>Flavours</legend>
+		<legend>
+			<strong>Eissorten - je Kugel 1€</strong>
+		</legend>
 	</fieldset>
 
-	<fieldset>
-		<legend>Cone or Cup?</legend>
+	<!-- Waffel oder Becher? -->
+	<fieldset id="ConeCup">
+		<legend>
+			<strong>Waffel oder Becher?</strong>
+		</legend>
 	</fieldset>
-	
-	<fieldset>
-		<legend>Toppings</legend>
-	</fieldset>
-  </main>
 
- <aside>
-    <fieldset id="shoppingcard">
-		<legend>Shopping card</legend>
+	<!-- Toppings -->
+	<fieldset id="Special">
+		<legend>
+			<strong>Toppings - jeweils 1,50€</strong>
+		</legend>
 	</fieldset>
-	
-	<fieldset id="delivery">
-		<legend>Delivery Options</legend>
-		<input type="radio" name="Delivery" value="Express" id="radio1" /> <label
-			for="radio1">Express</label> <input type="radio" name="Delivery"
-			value="Standard" id="radio2" /> <label for="radio2">Standard Delivery</label>
-			
-	</fieldset>
-	
-	<fieldset id="address">
-		<legend> Address </legend>
-		First Name 
-		<input type="text" name="FirstName" placeholder="type first name here" required /><br> 
-	    Last Name 
-	    <input type="text" name="LastName" placeholder="type last name here" required /><br> 
-	    Street 
-	    <input type="text" name="Street" placeholder="type streetname here" required /><br>
-		Postal Code 
-		<input type="text" name="PostalCode" pattern="[0-9, A-Z]{5}" placeholder="useRegEx" /><br>
-		Town 
-	    <input type="text" name="Town" placeholder="type townname here" required /><br>
-		Email 
-		<input type="email" name="Email" placeholder="place @ between" /><hr/>
-		<button name="Button" type="button">Send order</button>
-	</fieldset>
-</aside>
+	</main>
+
+	<aside>
+		<!-- Bestellübersicht -->
+		<fieldset id="shoppingcard">
+			<legend>
+				<strong>Bestellübersicht</strong>
+			</legend>
+			<span id="productlist"></span>
+			<hr>
+			<span id="total">Total: 0€</span>
+		</fieldset>
+
+		<!-- Adresse -->
+		<fieldset id="address">
+			<legend>
+				<strong>Adresse</strong>
+			</legend>
+			Vorname <input type="text" name="FirstName"
+				placeholder="tippe Vorname hier" required id="firstname" /><br>
+			Name <input type="text" name="LastName"
+				placeholder="tippe Nachname hier" required id="name" /><br>
+			Straße <input type="text" name="Street"
+				placeholder="tippe Straßenname hier" required id="street" /><br>
+			Postleitzahl <input type="text" name="PostalCode"
+				pattern="[0-9, A-Z]{5}" placeholder="bitte 5 Zahlen eingeben"
+				required id="PLZ" /><br> Ort <input type="text" name="Town"
+				placeholder="tippe Stadtname hier" required id="town" /><br>
+			Email <input type="email" name="Email"
+				placeholder="platziere @ dazwischen" required id="mail" />
+			<hr />
+			<select name="Delivery" id="delivery">
+				<option value="" disabled selected>Lieferoptionen</option>
+				<option value="Express">Express</option>
+				<option value="Standard">Standardversand</option>
+			</select>
+			<hr>
+			<button name="Button" type="button" id="proofOrder">Bestellung
+				prüfen und abschicken</button>
+		</fieldset>
+	</aside>
 </body>
 </html>
