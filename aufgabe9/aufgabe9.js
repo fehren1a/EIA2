@@ -40,14 +40,15 @@ function createInputs() {
     }
 }
 //Erzeugung der Stepper für die Eissorten
-function createInput(_sort) {
+function createInput(_sorts) {
     let label = document.createElement("label");
     let input = document.createElement("input");
-    label.innerText = _sort;
+    label.innerText = _sorts;
     label.appendChild(input);
     input.type = "number";
     input.min = "0";
     input.value = "0";
+    input.name = _sorts;
     fieldset.appendChild(label);
     inputs.push(input);
     console.log(inputs);
@@ -69,7 +70,7 @@ function createRadio(_container) {
     label.appendChild(input);
     label.id = _container;
     input.type = "radio";
-    input.value = "radio1";
+    input.value = _container;
     input.id = _container;
     input.name = "Container";
     input.required = true;
@@ -96,10 +97,9 @@ function createCheckbox(_special) {
     label.appendChild(input);
     label.id = _special;
     input.type = "checkbox";
-    input.value = "checkbox1";
+    input.value = _special;
     input.id = _special;
-    input.name = "darbietung";
-    input.required = true;
+    input.name = "Darbietung";
     //An das Fieldset werden die zuvor definierten Daten angehängt
     containerField.appendChild(input);
     containerField.appendChild(label);
@@ -236,7 +236,7 @@ function proof() {
         alert(comment.join(""));
     }
     else {
-        alert("Vielen Dank für Ihre Bestellung!");
+        alert("Vielen Dank für Ihre Bestellung! \nKlicken Sie nun auf OK");
     }
 }
 //# sourceMappingURL=aufgabe9.js.map
