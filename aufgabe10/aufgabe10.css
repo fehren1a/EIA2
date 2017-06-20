@@ -1,0 +1,110 @@
+/*
+Aufgabe: 9 - FormElements: Eisdealer
+Name: Jonas Fehrenbach
+Datum: 04.06.2017
+Matrikel: 254667
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Arimo: 400,700');
+* {
+	display: block;
+	vertical-align: top;
+}
+
+body {
+	background-image: url("lowpoly.png");
+	font-family: 'Arimo',sans-serif;
+}
+
+h1 {
+	font-size: 3em; text-align : center;
+	color: #2d2906;
+	text-align: center;
+}
+
+img {
+	margin: auto;
+	margin-bottom: 1em;
+	display: block;
+	width: 7em;
+}
+
+input[type="radio"], input[type="checkbox"], label {
+	display: inline;
+}
+
+label::after {
+	content: "";
+	display: block;
+}
+
+head {
+	display: none;
+}
+
+/* bei ungültiger Eingabe */
+input:invalid {
+	background: #ff1a1a;
+}
+
+/* bei gültiger Eingabe bzw. Ausgangszustand */
+input:valid {
+	background: white;
+}
+
+input:required {
+	background: #a6a6a6;
+}
+
+fieldset {
+	margin: auto;
+	background: #ede278;
+}
+
+svg, figure, button, option {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+}
+
+main fieldset, aside fieldset {
+	width: 80%;
+	margin-bottom: 15px;
+	padding: 15px;
+	font-size: 1.1em;
+	border: 2px solid black;
+}
+
+button {
+	background-color: white;
+	border: 2px solid #8C8C8C;
+	color: #252525;
+	font-size: 12pt;
+	padding: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #8C8C8C;
+}
+
+/*Responsive Webdesign */
+@media screen and (min-width: 700px ) {
+	main {
+		float: left;
+		width: 50%;
+	}
+	aside {
+		float: left;
+		width: 50%;
+	}
+	main fieldset, aside fieldset {
+		width: 65%;
+		margin-bottom: 15px;
+		padding: 15px;
+		font-size: 1.2em;
+		border: 2px solid black;
+	}
+}

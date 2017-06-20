@@ -1,0 +1,99 @@
+<!--
+Aufgabe: 10 - ClientServer
+Name: Jonas Fehrenbach
+Datum: 20.06.2017 
+Matrikel: 254667
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame 
+       Remove this if you use the .htaccess -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>Aufgabe 10 - ClientServer</title>
+<meta name="description" content="">
+<meta name="author" content="Jonas">
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<script src="aufgabe10.js"></script>
+<link rel="stylesheet" href="aufgabe10.css">
+
+</head>
+<body>
+	<!-- <form action="http://localhost:8100" method="get">-->
+	<form action="https://eia2-node-test.herokuapp.com" method="get">
+		<h1>Furtwangens Online Eisdealer</h1>
+		<img src="Eistüte.png">
+
+		<main> <!-- Eissorten -->
+		<fieldset id="flavours">
+			<legend>
+				<strong>Eissorten - je Kugel 1€</strong>
+			</legend>
+		</fieldset>
+
+		<!-- Waffel oder Becher? -->
+		<fieldset id="ConeCup">
+			<legend>
+				<strong>Waffel oder Becher?</strong>
+			</legend>
+		</fieldset>
+
+		<!-- Toppings -->
+		<fieldset id="Special">
+			<legend>
+				<strong>Toppings - jeweils 1,50€</strong>
+			</legend>
+		</fieldset>
+		</main>
+
+		<aside>
+			<!-- Bestellübersicht -->
+			<fieldset id="shoppingcard">
+				<legend>
+					<strong>Bestellübersicht</strong>
+				</legend>
+				<span id="productlist"></span>
+				<hr>
+				<span id="total">Total: 0€</span>
+			</fieldset>
+
+			<!-- Adresse -->
+			<fieldset id="address">
+				<legend>
+					<strong>Adresse</strong>
+				</legend>
+				Vorname <input type="text" name="FirstName"
+					placeholder="tippe Vorname hier" required id="firstname" /><br>
+				Name <input type="text" name="LastName"
+					placeholder="tippe Nachname hier" required id="name" /><br>
+				Straße <input type="text" name="Street"
+					placeholder="tippe Straßenname hier" required id="street" /><br>
+				Postleitzahl <input type="text" name="PostalCode"
+					pattern="[0-9, A-Z]{5}" placeholder="bitte 5 Zahlen eingeben"
+					required id="PLZ" /><br> Ort <input type="text" name="Town"
+					placeholder="tippe Stadtname hier" required id="town" /><br>
+				Email <input type="email" name="Email"
+					placeholder="platziere @ dazwischen" required id="mail" />
+				<hr />
+				<select name="Delivery" id="delivery">
+					<option value="" disabled selected>Lieferoptionen</option>
+					<option value="Express">Express</option>
+					<option value="Standard">Standardversand</option>
+				</select>
+				<hr>
+				<div>
+					<button name="Button" type="submit" id="proofOrder">Bestellung
+						prüfen und abschicken</button>
+				</div>
+			</fieldset>
+		</aside>
+	</form>
+</body>
+</html>
