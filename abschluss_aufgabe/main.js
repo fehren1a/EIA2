@@ -17,7 +17,7 @@ var L12_final;
         L12_final.crc2 = L12_final.canvas.getContext("2d");
         console.log(L12_final.crc2);
         //Erzeugen des Hintergrundes (Tischtennisplatte)
-        let b = new L12_final.Background();
+        L12_final.b = new L12_final.Background();
         //Hintergrund-Daten speichern
         saveBackgroundData = L12_final.crc2.getImageData(0, 0, L12_final.canvas.width, L12_final.canvas.height);
         L12_final.p = new L12_final.Panel();
@@ -25,10 +25,24 @@ var L12_final;
         L12_final.canvas.addEventListener("click", L12_final.p.move);
         window.setTimeout(animate, 0.01);
     }
+    let count = 0;
     function animate() {
         L12_final.crc2.putImageData(saveBackgroundData, 0, 0);
-        L12_final.p.update();
-        L12_final.ball.update();
+        if (L12_final.ball.gameOver) {
+            if (count < 300) {
+                console.log(count);
+                L12_final.b.writeGameOver();
+                count++;
+            }
+            else {
+                count = 0;
+                L12_final.ball = new L12_final.MovingBall();
+            }
+        }
+        else {
+            L12_final.ball.update();
+            L12_final.p.draw();
+        }
         window.setTimeout(animate, 0.01);
     }
 })(L12_final || (L12_final = {}));

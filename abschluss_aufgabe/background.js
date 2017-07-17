@@ -20,6 +20,10 @@ var L12_final;
             L12_final.crc2.fillStyle = "gray";
             L12_final.crc2.fillRect(0, 296, L12_final.crc2.canvas.width, 8);
         }
+        writeGameOver() {
+            L12_final.crc2.fillStyle = "#ffffff";
+            L12_final.crc2.fillText("Game Over", 300, 300);
+        }
     }
     L12_final.Background = Background;
 })(L12_final || (L12_final = {}));

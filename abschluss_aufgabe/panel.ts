@@ -8,13 +8,15 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 namespace L12_final {
     export class Panel {
-        p1x: number = 205;
+        p1x: number;
         p1y: number = 580;
         pwidth: number = 90;
         pheight: number = 11;
         color: string = "#000000";
 
         constructor() {
+            this.p1x = 205;
+            //
         }
 
         draw(): void {
@@ -25,10 +27,8 @@ namespace L12_final {
             crc2.fill();
         }
 
-        move(_event: Event): void {
-
-            let e: HTMLCanvasElement = <HTMLCanvasElement>_event;
-            console.log(_event.target.clientX);
+        move(_event: MouseEvent): void {
+            p.p1x = _event.offsetX - (p.pwidth / 2);
             //
         }
 

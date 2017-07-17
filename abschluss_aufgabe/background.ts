@@ -19,7 +19,13 @@ namespace L12_final {
 
             //horizontal line
             crc2.fillStyle = "gray";
-            crc2.fillRect(0, 296, crc2.canvas.width, 8);         
+            crc2.fillRect(0, 296, crc2.canvas.width, 8);
         }
+
+        writeGameOver(): void {
+            crc2.fillStyle = "#ffffff";
+            crc2.fillText("Game Over", 300, 300);
+        }
+
     }
 }

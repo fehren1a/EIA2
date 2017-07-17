@@ -10,13 +10,21 @@ var L12_final;
 (function (L12_final) {
     class MovingBall {
         constructor() {
-            this.bx = 125; //x-Wert des Balles (zu Beginn bei 125)
-            this.by = 10; //y-Wert des Balles (zu Beginn bei 10)
             this.size = 10; //Größe des Balles
-            this.xspeed = 3;
-            this.yspeed = 3;
+            this.xspeed = 1;
+            this.yspeed = 1;
+            this.counter = 0;
             console.log("Create ball");
             this.setRandomColor();
+            this.gameOver = false;
+            if (Math.random() > 0.5) {
+                this.xspeed = 1;
+            }
+            else {
+                this.xspeed = -1;
+            }
+            this.bx = (Math.random() * 480) + 20;
+            this.by = (Math.random() * 40) + 10;
         }
         draw() {
             L12_final.crc2.fillStyle = this.color;
@@ -29,8 +37,17 @@ var L12_final;
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
             this.by += this.yspeed;
+            L12_final.crc2.fillText("" + (this.counter), 200, 200);
             if (this.yspeed > 0 && this.bx > L12_final.p.p1x && this.bx < (L12_final.p.p1x + L12_final.p.pwidth) && this.by > (L12_final.p.p1y - L12_final.p.pheight)) {
                 this.yspeed = -this.yspeed;
+                this.counter += 1;
+                if (this.xspeed > 0) {
+                    this.xspeed = this.xspeed + 0.1;
+                }
+                else {
+                    this.xspeed = this.xspeed - 0.1;
+                }
+                this.yspeed = this.yspeed - 0.1;
             }
             //oberer Spielfeldrand
             if (this.by < 7 && this.yspeed < 0) {
@@ -38,7 +55,7 @@ var L12_final;
             }
             //unterer Spielfeldrand
             if (this.by > 593 && this.yspeed > 0) {
-                this.yspeed = -this.yspeed;
+                this.gameOver = true;
             }
             //linker Spielfeldrand
             if (this.bx < 7 && this.xspeed < 0) {

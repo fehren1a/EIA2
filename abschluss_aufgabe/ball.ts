@@ -8,16 +8,28 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 namespace L12_final {
     export class MovingBall {
-        bx: number = 125; //x-Wert des Balles (zu Beginn bei 125)
-        by: number = 10;  //y-Wert des Balles (zu Beginn bei 10)
+        bx: number; //x-Wert des Balles (zu Beginn bei 125)
+        by: number;  //y-Wert des Balles (zu Beginn bei 10)
         size: number = 10; //Größe des Balles
-        xspeed: number = 3;
-        yspeed: number = 3;
+        xspeed: number = 1;
+        yspeed: number = 1;
         color: string;
+        gameOver: boolean;
+        counter: number = 0;
 
         constructor() {
             console.log("Create ball");
             this.setRandomColor();
+            this.gameOver = false;
+            if (Math.random() > 0.5) {
+                this.xspeed = 1;
+            }
+            else {
+                this.xspeed = -1;
+            }
+
+            this.bx = (Math.random() * 480) + 20;
+            this.by = (Math.random() * 40) + 10;
         }
 
         draw(): void {
@@ -33,8 +45,20 @@ namespace L12_final {
             this.bx += this.xspeed;
             this.by += this.yspeed;
 
+            crc2.fillText("" + (this.counter), 200, 200);
+
             if (this.yspeed > 0 && this.bx > p.p1x && this.bx < (p.p1x + p.pwidth) && this.by > (p.p1y - p.pheight)) {
                 this.yspeed = -this.yspeed;
+                this.counter += 1;
+
+                if (this.xspeed > 0) {
+                    this.xspeed = this.xspeed + 0.1;
+                }
+                else {
+                    this.xspeed = this.xspeed - 0.1;
+                }
+
+                this.yspeed = this.yspeed - 0.1;
             }
 
             //oberer Spielfeldrand
@@ -44,7 +68,7 @@ namespace L12_final {
 
             //unterer Spielfeldrand
             if (this.by > 593 && this.yspeed > 0) {
-                this.yspeed = -this.yspeed;
+                this.gameOver = true;
             }
 
             //linker Spielfeldrand

@@ -14,6 +14,7 @@ namespace L12_final {
     export let ball: MovingBall;
     export let p: Panel;
     export let canvas: HTMLCanvasElement;
+    export let b: Background
 
     function init(_event: Event): void {
 
@@ -27,7 +28,7 @@ namespace L12_final {
         console.log(crc2);
 
         //Erzeugen des Hintergrundes (Tischtennisplatte)
-        let b: Background = new Background();
+        b = new Background();
 
         //Hintergrund-Daten speichern
         saveBackgroundData = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -40,10 +41,27 @@ namespace L12_final {
         window.setTimeout(animate, 0.01);
     }
 
+    let count: number = 0;
     function animate(): void {
         crc2.putImageData(saveBackgroundData, 0, 0);
-        p.update();
-        ball.update();
+
+
+        if (ball.gameOver) {
+            if (count < 300) {
+                console.log(count);
+                b.writeGameOver();
+                count++;
+            }
+            else {
+                count = 0;
+                ball = new MovingBall();
+            }
+        }
+
+        else {
+            ball.update();
+            p.draw();
+        }
         window.setTimeout(animate, 0.01);
     }
 }
