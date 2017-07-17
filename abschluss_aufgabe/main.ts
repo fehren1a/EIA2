@@ -11,15 +11,13 @@ namespace L12_final {
 
     export let crc2: CanvasRenderingContext2D;
     let saveBackgroundData: ImageData;
-    export let ball: MovingBall;
+    export let ball: MovingBall[] = []; //Array, um variabel Bälle hinzufügen zu können
     export let p: Panel;
     export let canvas: HTMLCanvasElement;
-    export let b: Background
+    export let b: Background;
+    export let amount: number = 1; 
 
     function init(_event: Event): void {
-
-
-
 
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.marginLeft = "10px";
@@ -32,11 +30,19 @@ namespace L12_final {
 
         //Hintergrund-Daten speichern
         saveBackgroundData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-
+        
+        //Erzeugen des Panels
         p = new Panel();
-        ball = new MovingBall();
+        
+        //Erzeugen des Balles
+        for (let i: number = 0; i < amount; i++) {
+            var s: MovingBall = new MovingBall();
+            ball[i] = s;
+        }
+        //ball = new MovingBall();
 
         canvas.addEventListener("click", p.move);
+        canvas.addEventListener("touch", p.move);
 
         window.setTimeout(animate, 0.01);
     }
@@ -44,24 +50,26 @@ namespace L12_final {
     let count: number = 0;
     function animate(): void {
         crc2.putImageData(saveBackgroundData, 0, 0);
+        for (var i: number = 0; i < amount; i++) {
+            var s: MovingBall = ball[i];
 
-
-        if (ball.gameOver) {
-            if (count < 300) {
-                console.log(count);
-                b.writeGameOver();
-                count++;
+            if (s.gameOver) {
+                if (count < 300) {
+                    console.log(count);
+                    b.writeGameOver();
+                    count++;
+                }
+                else {
+                    count = 0;
+                    s = new MovingBall();
+                }
             }
+
             else {
-                count = 0;
-                ball = new MovingBall();
+                s.update();
+                p.draw();
             }
-        }
-
-        else {
-            ball.update();
-            p.draw();
-        }
-        window.setTimeout(animate, 0.01);
+            window.setTimeout(animate, 0.01);
+        }//Ende for-Schleife
     }
 }

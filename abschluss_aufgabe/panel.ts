@@ -15,10 +15,13 @@ namespace L12_final {
         color: string = "#000000";
 
         constructor() {
-            this.p1x = 205;
-            //
+            this.p1x = 205; //Ausgangsposition des Panels
         }
-
+        
+        update(): void {
+            this.draw();
+        }
+        
         draw(): void {
             //Zeichnen des Panels
             crc2.fillStyle = this.color;
@@ -27,17 +30,9 @@ namespace L12_final {
             crc2.fill();
         }
 
+        //Das Panel springt zur geklickten Position, die Mitte des Panels entspricht dem x-Wert des Klicks (Event)
         move(_event: MouseEvent): void {
             p.p1x = _event.offsetX - (p.pwidth / 2);
-            //
-        }
-
-        reset(): void {
-            //
-        }
-
-        update(): void {
-            this.draw();
         }
     }
 }

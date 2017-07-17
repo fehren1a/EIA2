@@ -14,14 +14,15 @@ namespace L12_final {
             crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
             //vetical line
-            crc2.fillStyle = "#ffffff"; //green
+            crc2.fillStyle = "#ffffff"; //weiß
             crc2.fillRect(246, 0, 8, crc2.canvas.height);
 
             //horizontal line
             crc2.fillStyle = "gray";
             crc2.fillRect(0, 296, crc2.canvas.width, 8);
         }
-
+        
+        //"Game Over" wird auf das Spielfeld geschrieben
         writeGameOver(): void {
             crc2.fillStyle = "#ffffff";
             crc2.font = "40px Arial";
