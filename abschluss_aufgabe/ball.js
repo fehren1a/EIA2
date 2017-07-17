@@ -37,7 +37,8 @@ var L12_final;
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
             this.by += this.yspeed;
-            L12_final.crc2.fillText("" + (this.counter), 200, 200);
+            L12_final.crc2.font = "25px Arial";
+            L12_final.crc2.fillText("Punkte: " + (this.counter), 10, 25);
             if (this.yspeed > 0 && this.bx > L12_final.p.p1x && this.bx < (L12_final.p.p1x + L12_final.p.pwidth) && this.by > (L12_final.p.p1y - L12_final.p.pheight)) {
                 this.yspeed = -this.yspeed;
                 this.counter += 1;

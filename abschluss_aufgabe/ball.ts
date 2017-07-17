@@ -45,7 +45,8 @@ namespace L12_final {
             this.bx += this.xspeed;
             this.by += this.yspeed;
 
-            crc2.fillText("" + (this.counter), 200, 200);
+            crc2.font = "25px Arial";
+            crc2.fillText("Punkte: " + (this.counter), 10, 25);
 
             if (this.yspeed > 0 && this.bx > p.p1x && this.bx < (p.p1x + p.pwidth) && this.by > (p.p1y - p.pheight)) {
                 this.yspeed = -this.yspeed;

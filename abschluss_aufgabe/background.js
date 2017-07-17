@@ -22,7 +22,8 @@ var L12_final;
         }
         writeGameOver() {
             L12_final.crc2.fillStyle = "#ffffff";
-            L12_final.crc2.fillText("Game Over", 300, 300);
+            L12_final.crc2.font = "40px Arial";
+            L12_final.crc2.fillText("Game Over", 270, 285);
         }
     }
     L12_final.Background = Background;

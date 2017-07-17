@@ -24,7 +24,8 @@ namespace L12_final {
 
         writeGameOver(): void {
             crc2.fillStyle = "#ffffff";
-            crc2.fillText("Game Over", 300, 300);
+            crc2.font = "40px Arial";
+            crc2.fillText("Game Over", 270, 285);
         }
 
     }
