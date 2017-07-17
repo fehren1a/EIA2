@@ -1,0 +1,21 @@
+/*
+Aufgabe: Abschluss - Freie Arbeit
+Name: Jonas Fehrenbach
+Datum: 21.07.2017
+Matrikel: 254667
+
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+body {
+	background-color: black;
+}
+
+h3 {
+	color: white;
+	font-family: Arial;
+	margin-left: 10px;
+}
+
+canvas {
+	border: 7px solid white;
+}
