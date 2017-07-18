@@ -18,21 +18,16 @@ namespace L12_final {
             this.p1x = 205; //Ausgangsposition des Panels
         }
         
-        update(): void {
-            this.draw();
-        }
-        
         draw(): void {
             //Zeichnen des Panels
             crc2.fillStyle = this.color;
-            crc2.beginPath();
             crc2.fillRect(this.p1x, this.p1y, this.pwidth, this.pheight);
-            crc2.fill();
         }
 
         //Das Panel springt zur geklickten Position, die Mitte des Panels entspricht dem x-Wert des Klicks (Event)
-        move(_event: MouseEvent): void {
-            p.p1x = _event.offsetX - (p.pwidth / 2);
+        move(_x: number): void {
+            console.log("clicked");
+            this.p1x = _x - (this.pwidth / 2);
         }
     }
 }

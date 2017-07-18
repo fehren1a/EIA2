@@ -6,6 +6,10 @@ Matrikel: 254667
 
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
+
+///<reference path="background.ts" />
+///<reference path="ball.ts" />
+///<reference path="panel.ts" />
 namespace L12_final {
     window.addEventListener("load", init);
 
@@ -15,9 +19,10 @@ namespace L12_final {
     export let p: Panel;
     export let canvas: HTMLCanvasElement;
     export let b: Background;
-    export let amount: number = 1; 
+    export let amount: number = 1;
+    let count = 0;
 
-    function init(_event: Event): void {
+    function init(): void {
 
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.style.marginLeft = "10px";
@@ -36,22 +41,21 @@ namespace L12_final {
         
         //Erzeugen des Balles
         for (let i: number = 0; i < amount; i++) {
-            var s: MovingBall = new MovingBall();
-            ball[i] = s;
+            ball[i] = new MovingBall();
         }
         //ball = new MovingBall();
 
-        canvas.addEventListener("click", p.move);
-        canvas.addEventListener("touch", p.move);
+        canvas.addEventListener("click", onClick);
+        canvas.addEventListener("touch", onClick);
 
-        window.setTimeout(animate, 0.01);
+        window.setTimeout(animate, 20);
     }
 
-    let count: number = 0;
+
     function animate(): void {
         crc2.putImageData(saveBackgroundData, 0, 0);
-        for (var i: number = 0; i < amount; i++) {
-            var s: MovingBall = ball[i];
+        for (let i: number = 0; i < amount; i++) {
+            let s: MovingBall = ball[i];
 
             if (s.gameOver) {
                 if (count < 300) {
@@ -61,15 +65,22 @@ namespace L12_final {
                 }
                 else {
                     count = 0;
-                    s = new MovingBall();
+                    ball[i] = new MovingBall();
                 }
             }
-
             else {
                 s.update();
-                p.draw();
             }
-            window.setTimeout(animate, 0.01);
         }//Ende for-Schleife
+
+        // ### Der Balken muss nur einmal gesetzt werden, also nicht in der Schleife ###
+        p.draw();
+        // ### Selbe Sache mit dem Timeout: Der muss einmal ganz am Ende von Animate gesetzt werden, damit die Funktion einmal neu gestartet wird ###
+        window.setTimeout(animate, 20);
+    }
+
+    // ### Zusätzliche Funktion die vom Event aufgerufen wird um den Referenzensalat in Panel.move() zu vermeiden ###
+    function onClick(_event: MouseEvent): void {
+        p.move(_event.offsetX);
     }
 }

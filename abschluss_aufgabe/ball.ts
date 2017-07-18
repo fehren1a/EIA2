@@ -15,7 +15,8 @@ namespace L12_final {
         yspeed: number = 1;
         color: string;
         gameOver: boolean;
-        counter: number = 0; //Punktezähler
+        // ### Der Highscore sollte nicht von einem Ball gezählt werden, da sonst wenn du mehrere Bälle hast mehrere Highscores existieren. ###
+        //counter: number = 0; //Punktezähler
 
         constructor() {
             console.log("Create ball");
@@ -24,10 +25,10 @@ namespace L12_final {
             
             //Ist die Zufallszahl größer als 0.5, dann bewegt sich der Ball in positive Richtung, d.h. nach rechts und falls die Zahl kleiner 0.5 ist entgegengesetzt, d.h. nach links
             if (Math.random() > 0.5) {
-                this.xspeed = 1;
+                this.xspeed = 3;
             }
             else {
-                this.xspeed = -1;
+                this.xspeed = -3;
             }
             
             //Zufällige x- und y-Werte werden für den Ball als Startposition ermittelt
@@ -51,22 +52,24 @@ namespace L12_final {
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
             this.by += this.yspeed;
-            
+
+            // ### Nicht Aufgabe des Balls, sondern des Spiels ###
             //Punkteanzahl wird auf den Canvas geschrieben
-            crc2.font = "20px Arial";
-            crc2.fillText("Points: " + (this.counter), 10, 25);
+            //crc2.font = "20px Arial";
+            //crc2.fillText("Points: " + (this.counter), 10, 25);
 
             //Ball prallt von Panel ab
             if (this.yspeed > 0 && this.bx > p.p1x && this.bx < (p.p1x + p.pwidth) && this.by > (p.p1y - p.pheight)) {
                 this.yspeed = -this.yspeed; //die y-Richtung wird umgekehrt
-                this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
-                
+                //this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
+
+                // ### Davon weis der der Ball nichts, das ist Spiellogik ###
                 //Wenn die Punkteanzahl 2 entspricht, soll ein neuer Ball erzeugt werden
-                if (this.counter == 2) {
-                    var s: MovingBall = new MovingBall();
+                /*if (this.counter == 2) {
+                    let s: MovingBall = new MovingBall();
                     ball.push(s);
                     amount += 1;
-                }
+                }*/
                 
                 //Wenn die X-Geschwindigkeit größer als 0 ist beim Abprallen, so wird diese um den Wert 0.1 erhöht 
                 if (this.xspeed > 0) {
