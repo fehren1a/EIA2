@@ -9,11 +9,11 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 var L12_final;
 (function (L12_final) {
     class MovingBall {
+        //counter: number = 0; //Punktezähler
         constructor() {
             this.size = 10; //Größe des Balles
             this.xspeed = 1;
             this.yspeed = 1;
-            this.counter = 0; //Punktezähler
             console.log("Create ball");
             this.setRandomColor();
             this.gameOver = false;
@@ -43,18 +43,18 @@ var L12_final;
             this.bx += this.xspeed;
             this.by += this.yspeed;
             //Punkteanzahl wird auf den Canvas geschrieben
-            L12_final.crc2.font = "20px Arial";
-            L12_final.crc2.fillText("Points: " + (this.counter), 10, 25);
+            //crc2.font = "20px Arial";
+            //crc2.fillText("Points: " + (this.counter), 10, 25);
             //Ball prallt von Panel ab
             if (this.yspeed > 0 && this.bx > L12_final.p.p1x && this.bx < (L12_final.p.p1x + L12_final.p.pwidth) && this.by > (L12_final.p.p1y - L12_final.p.pheight)) {
                 this.yspeed = -this.yspeed; //die y-Richtung wird umgekehrt
-                this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
+                //this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
                 //Wenn die Punkteanzahl 2 entspricht, soll ein neuer Ball erzeugt werden
-                if (this.counter == 2) {
-                    var s = new MovingBall();
-                    L12_final.ball.push(s);
-                    L12_final.amount += 1;
-                }
+                //                if (this.counter == 2) {
+                //                    var s: MovingBall = new MovingBall();
+                //                    ball.push(s);
+                //                    amount += 1;
+                //                }
                 //Wenn die X-Geschwindigkeit größer als 0 ist beim Abprallen, so wird diese um den Wert 0.1 erhöht 
                 if (this.xspeed > 0) {
                     this.xspeed = this.xspeed + 0.1;

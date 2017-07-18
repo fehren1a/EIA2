@@ -27,8 +27,9 @@ var L12_final;
             L12_final.crc2.fill();
         }
         //Das Panel springt zur geklickten Position, die Mitte des Panels entspricht dem x-Wert des Klicks (Event)
-        move(_event) {
-            L12_final.p.p1x = _event.offsetX - (L12_final.p.pwidth / 2);
+        move(_x) {
+            console.log("clicked");
+            this.p1x = _x - (this.pwidth / 2);
         }
     }
     L12_final.Panel = Panel;

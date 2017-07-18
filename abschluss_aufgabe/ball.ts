@@ -15,7 +15,7 @@ namespace L12_final {
         yspeed: number = 1;
         color: string;
         gameOver: boolean;
-        counter: number = 0; //Punktezähler
+        //counter: number = 0; //Punktezähler
 
         constructor() {
             console.log("Create ball");
@@ -53,20 +53,20 @@ namespace L12_final {
             this.by += this.yspeed;
             
             //Punkteanzahl wird auf den Canvas geschrieben
-            crc2.font = "20px Arial";
-            crc2.fillText("Points: " + (this.counter), 10, 25);
+            //crc2.font = "20px Arial";
+            //crc2.fillText("Points: " + (this.counter), 10, 25);
 
             //Ball prallt von Panel ab
             if (this.yspeed > 0 && this.bx > p.p1x && this.bx < (p.p1x + p.pwidth) && this.by > (p.p1y - p.pheight)) {
                 this.yspeed = -this.yspeed; //die y-Richtung wird umgekehrt
-                this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
+                //this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
                 
                 //Wenn die Punkteanzahl 2 entspricht, soll ein neuer Ball erzeugt werden
-                if (this.counter == 2) {
-                    var s: MovingBall = new MovingBall();
-                    ball.push(s);
-                    amount += 1;
-                }
+//                if (this.counter == 2) {
+//                    var s: MovingBall = new MovingBall();
+//                    ball.push(s);
+//                    amount += 1;
+//                }
                 
                 //Wenn die X-Geschwindigkeit größer als 0 ist beim Abprallen, so wird diese um den Wert 0.1 erhöht 
                 if (this.xspeed > 0) {

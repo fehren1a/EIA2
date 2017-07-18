@@ -15,7 +15,10 @@ namespace L12_final {
     export let p: Panel;
     export let canvas: HTMLCanvasElement;
     export let b: Background;
-    export let amount: number = 1; 
+    export let amount: number = 1;
+    let count: number = 0;
+    let counter: number = 0;
+    console.log(counter);
 
     function init(_event: Event): void {
 
@@ -30,46 +33,60 @@ namespace L12_final {
 
         //Hintergrund-Daten speichern
         saveBackgroundData = crc2.getImageData(0, 0, canvas.width, canvas.height);
-        
+
         //Erzeugen des Panels
         p = new Panel();
-        
+
         //Erzeugen des Balles
         for (let i: number = 0; i < amount; i++) {
-            var s: MovingBall = new MovingBall();
-            ball[i] = s;
+            ball[i] = new MovingBall();
         }
         //ball = new MovingBall();
 
-        canvas.addEventListener("click", p.move);
-        canvas.addEventListener("touch", p.move);
+        canvas.addEventListener("click", onClick);
+        canvas.addEventListener("touch", onClick);
 
-        window.setTimeout(animate, 0.01);
+        window.setTimeout(animate, 20);
     }
 
-    let count: number = 0;
     function animate(): void {
         crc2.putImageData(saveBackgroundData, 0, 0);
-        for (var i: number = 0; i < amount; i++) {
-            var s: MovingBall = ball[i];
+        writeCounter();
+
+        for (let i: number = 0; i < amount; i++) {
+            let s: MovingBall = ball[i];
+
+            if (s.yspeed > 0 && s.bx > p.p1x && s.bx < (p.p1x + p.pwidth) && s.by > (p.p1y - p.pheight)) {
+                counter += 1;
+                writeCounter();
+            }
 
             if (s.gameOver) {
-                if (count < 300) {
+                if (count < 100) {
                     console.log(count);
                     b.writeGameOver();
                     count++;
                 }
                 else {
                     count = 0;
-                    s = new MovingBall();
+                    ball[i] = new MovingBall();
                 }
             }
 
             else {
                 s.update();
-                p.draw();
             }
-            window.setTimeout(animate, 0.01);
         }//Ende for-Schleife
+        p.draw();
+        window.setTimeout(animate, 20);
+    } 
+    function writeCounter(): void {
+        crc2.fillStyle = "#ffffff";
+        crc2.font = "20px Arial";
+        crc2.fillText("Points: " + (counter), 10, 25);
+    }
+
+    function onClick(_event: MouseEvent): void {
+        p.move(_event.offsetX);
     }
 }
