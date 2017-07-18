@@ -21,10 +21,10 @@ var L12_final;
         }
         draw() {
             //Zeichnen des Panels
-            L12_final.crc2.fillStyle = this.color;
-            L12_final.crc2.beginPath();
-            L12_final.crc2.fillRect(this.p1x, this.p1y, this.pwidth, this.pheight);
-            L12_final.crc2.fill();
+            L12_final.crx.fillStyle = this.color;
+            L12_final.crx.beginPath();
+            L12_final.crx.fillRect(this.p1x, this.p1y, this.pwidth, this.pheight);
+            L12_final.crx.fill();
         }
         //Das Panel springt zur geklickten Position, die Mitte des Panels entspricht dem x-Wert des Klicks (Event)
         move(_x) {

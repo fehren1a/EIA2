@@ -24,10 +24,10 @@ namespace L12_final {
 
         draw(): void {
             //Zeichnen des Panels
-            crc2.fillStyle = this.color;
-            crc2.beginPath();
-            crc2.fillRect(this.p1x, this.p1y, this.pwidth, this.pheight);
-            crc2.fill();
+            crx.fillStyle = this.color;
+            crx.beginPath();
+            crx.fillRect(this.p1x, this.p1y, this.pwidth, this.pheight);
+            crx.fill();
         }
 
         //Das Panel springt zur geklickten Position, die Mitte des Panels entspricht dem x-Wert des Klicks (Event)

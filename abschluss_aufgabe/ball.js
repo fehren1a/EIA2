@@ -9,20 +9,20 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 var L12_final;
 (function (L12_final) {
     class MovingBall {
-        //counter: number = 0; //Punktezähler
         constructor() {
             this.size = 10; //Größe des Balles
-            this.xspeed = 1;
-            this.yspeed = 1;
+            this.xspeed = 4;
+            this.yspeed = 4;
+            this.isHit = false;
             console.log("Create ball");
             this.setRandomColor();
             this.gameOver = false;
             //Ist die Zufallszahl größer als 0.5, dann bewegt sich der Ball in positive Richtung, d.h. nach rechts und falls die Zahl kleiner 0.5 ist entgegengesetzt, d.h. nach links
             if (Math.random() > 0.5) {
-                this.xspeed = 1;
+                this.xspeed = 4;
             }
             else {
-                this.xspeed = -1;
+                this.xspeed = -4;
             }
             //Zufällige x- und y-Werte werden für den Ball als Startposition ermittelt
             this.bx = (Math.random() * 480) + 20;
@@ -33,28 +33,19 @@ var L12_final;
             this.draw();
         }
         draw() {
-            L12_final.crc2.fillStyle = this.color;
-            L12_final.crc2.beginPath();
-            L12_final.crc2.arc(this.bx - this.size / 2, this.by, this.size, 0, 2 * Math.PI);
-            L12_final.crc2.fill();
+            L12_final.crx.fillStyle = this.color;
+            L12_final.crx.beginPath();
+            L12_final.crx.arc(this.bx - this.size / 2, this.by, this.size, 0, 2 * Math.PI);
+            L12_final.crx.fill();
         }
         move() {
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
             this.by += this.yspeed;
-            //Punkteanzahl wird auf den Canvas geschrieben
-            //crc2.font = "20px Arial";
-            //crc2.fillText("Points: " + (this.counter), 10, 25);
             //Ball prallt von Panel ab
-            if (this.yspeed > 0 && this.bx > L12_final.p.p1x && this.bx < (L12_final.p.p1x + L12_final.p.pwidth) && this.by > (L12_final.p.p1y - L12_final.p.pheight)) {
+            if (this.yspeed > 0 && this.bx > L12_final.pgame.p.p1x && this.bx < (L12_final.pgame.p.p1x + L12_final.pgame.p.pwidth) && this.by > (L12_final.pgame.p.p1y - L12_final.pgame.p.pheight)) {
                 this.yspeed = -this.yspeed; //die y-Richtung wird umgekehrt
-                //this.counter += 1; //Bei jedem Abprallen wird die Punkteanzahl um 1 erhöht
-                //Wenn die Punkteanzahl 2 entspricht, soll ein neuer Ball erzeugt werden
-                //                if (this.counter == 2) {
-                //                    var s: MovingBall = new MovingBall();
-                //                    ball.push(s);
-                //                    amount += 1;
-                //                }
+                this.isHit = true;
                 //Wenn die X-Geschwindigkeit größer als 0 ist beim Abprallen, so wird diese um den Wert 0.1 erhöht 
                 if (this.xspeed > 0) {
                     this.xspeed = this.xspeed + 0.1;
@@ -81,7 +72,9 @@ var L12_final;
                 this.xspeed = -this.xspeed;
             }
         }
-        //Random Farbe wird generiert
+        getGameOver() {
+            return this.gameOver;
+        }
         setRandomColor() {
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }

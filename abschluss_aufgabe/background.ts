@@ -10,23 +10,23 @@ namespace L12_final {
     export class Background {
         constructor() {
             //field
-            crc2.fillStyle = "#009900"; //green
-            crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+            crx.fillStyle = "#009900"; //green
+            crx.fillRect(0, 0, crx.canvas.width, crx.canvas.height);
 
             //vetical line
-            crc2.fillStyle = "#ffffff"; //weiß
-            crc2.fillRect(246, 0, 8, crc2.canvas.height);
+            crx.fillStyle = "#ffffff"; //weiß
+            crx.fillRect(246, 0, 8, crx.canvas.height);
 
             //horizontal line
-            crc2.fillStyle = "gray";
-            crc2.fillRect(0, 296, crc2.canvas.width, 8);
+            crx.fillStyle = "gray";
+            crx.fillRect(0, 296, crx.canvas.width, 8);
         }
         
         //"Game Over" wird auf das Spielfeld geschrieben
         writeGameOver(): void {
-            crc2.fillStyle = "#ffffff";
-            crc2.font = "40px Arial";
-            crc2.fillText("Game Over", 270, 285);
+            crx.fillStyle = "#ffffff";
+            crx.font = "40px Arial";
+            crx.fillText("Game Over", 270, 285);
         }
 
     }
