@@ -9,17 +9,17 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 namespace L14_final {
     window.addEventListener("load", start); //Start-Bildschirm wird aufgerufen
 
+    //Deklarationen
     export let crc2: CanvasRenderingContext2D;
     let saveBackgroundData: ImageData;
     export let ball: MovingBall[] = []; //Array, um variabel Bälle hinzufügen zu können
     export let p: Panel;
     export let canvas: HTMLCanvasElement;
     export let b: Background;
-    export let amount: number = 1;
+    export let amount: number = 1; //Anzahl Bälle
     let count: number = 0;
-    export let counter: number = 0;
+    export let points: number = 0;
     let isRunning: boolean = true;
-    console.log("Punktezahl: " + counter);
 
     //Start Bildschirm
     function start(_event: Event): void {
@@ -39,14 +39,23 @@ namespace L14_final {
         crc2.fillStyle = "#d9d9d9";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
+        //grüner Kreis
+        crc2.fillStyle = "#008000";
+        crc2.beginPath();
+        crc2.arc(35, 280, 55, 0, 2 * Math.PI);
+        crc2.fill();
+
         //Startmenü 
         crc2.stroke();
         crc2.fillStyle = "black";
-        crc2.font = "40px Arial";
-        crc2.fillText("PONG - THE GAME", 60, 250);
+        crc2.font = "55px Arial";
+        crc2.fillText("PONG - THE GAME", 50, 300);
         crc2.font = "20px Arial";
-        crc2.fillText("Klicken Sie um das Spiel zu starten.", 60, 310);
+        crc2.fillText("Klicken Sie um das Spiel zu starten.", 140, 360);
+        crc2.font = "12px Arial";
+        crc2.fillText("© by Jonas Fehrenbach", 460, 688);
     }
+    
     //--------------------------------------------------------------------------   
     //Hinweise zur Bedienung
     function startScreen2(_event: Event): void {
@@ -68,26 +77,20 @@ namespace L14_final {
         crc2.fillStyle = "#d9d9d9";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
-        // Schrift
-        crc2.strokeStyle = "#008000";
-        crc2.moveTo(13, 80);
-        crc2.lineTo(487, 80);
-        crc2.stroke();
-
+        //Hinweis-Text
         crc2.fillStyle = "black";
-        crc2.font = "40px Arial";
-        crc2.textBaseline = "bottom";
-        crc2.fillText("PONG - THE GAME", 71, 80);
+        crc2.font = "45px Arial";
+        crc2.fillText("PONG - THE GAME", 80, 140);
         crc2.font = "20px Arial";
-        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 20, 170);
-        crc2.fillText("das schwarze Panel mit einem Mausklick ", 20, 200);
-        crc2.fillText("in die gewünschte Richtung bewegen. ", 20, 230);
-        crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 20, 260);
-        crc2.fillText("ist das Spiel verloren. ", 20, 290);
-        crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 20, 320);
+        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
+        crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
+        crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
+        crc2.fillText("ist das Spiel verloren. ", 80, 350);
+        crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 80, 380);
         crc2.fillStyle = "#008000";
         crc2.font = "30px Arial";
-        crc2.fillText("Tippe um das Spiel zu starten.", 20, 420);
+        crc2.fillText("Tippe um das Spiel zu starten.", 80, 480);
     };
 
     //--------------------------------------------------------------------------   
@@ -112,28 +115,22 @@ namespace L14_final {
         crc2.fillStyle = "#d9d9d9";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
-        // Schrift
-        crc2.strokeStyle = "#004d00";
-        crc2.moveTo(13, 80);
-        crc2.lineTo(487, 80);
-        crc2.stroke();
-
+        //Hinweis-Text
         crc2.fillStyle = "black";
-        crc2.font = "40px Arial";
-        crc2.textBaseline = "bottom";
-        crc2.fillText("PONG - THE GAME", 71, 80);
+        crc2.font = "45px Arial";
+        crc2.fillText("PONG - THE GAME", 80, 140);
         crc2.font = "20px Arial";
-        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 20, 170);
-        crc2.fillText("das schwarze Panel mit einem Mausklick ", 20, 200);
-        crc2.fillText("in die gewünschte Richtung bewegen. ", 20, 230);
-        crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 20, 260);
-        crc2.fillText("ist das Spiel verloren. ", 20, 290);
-        crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 20, 320);
+        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
+        crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
+        crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
+        crc2.fillText("ist das Spiel verloren. ", 80, 350);
+        crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 80, 380);
         crc2.fillStyle = "#008000";
         crc2.font = "30px Arial";
-        crc2.fillText("Tippe um das Spiel zu starten.", 20, 420);
+        crc2.fillText("Tippe um das Spiel zu starten.", 80, 480);
     };
-    
+
     //Spiele-Funktionalität
     function init(_event: Event): void {
 
@@ -169,25 +166,30 @@ namespace L14_final {
 
     function animate(): void {
         crc2.putImageData(saveBackgroundData, 0, 0);
-        writeCounter();
+        writepoints();
 
         for (let i: number = 0; i < amount; i++) {
             let s: MovingBall = ball[i];
-            updateCounter(i);
+            updatepoints(i);
 
+            //Im Falle von Game Over, d.h. wenn der Ball den unteren Spielfeldrand verlässt
             if (s.gameOver) {
+                //Zähle bis 100 und starte danach das Spiel neu
                 if (count < 100) {
                     console.log(count);
                     b.writeGameOver();
                     isRunning = false;
-                    counter = 0;
                     count++;
                 }
+                //Bei Neustart
                 else {
                     count = 0;
+                    points = 0;  //Reset der Punkteanzahl
                     p = new Panel();
                     isRunning = true;
-                    ball[i] = new MovingBall();
+                    ball.splice(0, ball.length);
+                    ball[0] = new MovingBall();
+                    amount = 1;
                 }
             }
 
@@ -199,18 +201,22 @@ namespace L14_final {
         window.setTimeout(animate, 20);
     }
 
-    function updateCounter(_i: number): void {
+    function updatepoints(_i: number): void {
 
+        //Falls der Ball vom Panel abprallt, dann führe folgendes aus:
         if (ball[_i].isHit) {
-            counter += 1;
+            points += 1;
             ball[_i].isHit = false;
-            if (counter == 1) {
+
+            //Entspricht die Punktezahl 5, wird ein neuer Ball hinzugefügt
+            if (points == 5) {
                 let m: MovingBall = new MovingBall();
                 ball.push(m);
                 amount += 1;
             }
 
-            if (counter == 7) {
+            //Entspricht die Punktezahl 10, wird ein neuer Ball hinzugefügt
+            if (points == 10) {
                 let m: MovingBall = new MovingBall();
                 ball.push(m);
                 amount += 1;
@@ -218,10 +224,11 @@ namespace L14_final {
         }
     }
 
-    function writeCounter(): void {
+    //Funktion zum Schreiben der Punktezahl auf den Canvas
+    function writepoints(): void {
         crc2.fillStyle = "#ffffff";
-        crc2.font = "20px Arial";
-        crc2.fillText("Points: " + (counter), 10, 25);
+        crc2.font = "27px Arial";
+        crc2.fillText("Points: " + (points), 10, 37);
     }
 
     function onClick(_event: MouseEvent): void {

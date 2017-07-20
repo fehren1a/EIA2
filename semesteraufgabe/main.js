@@ -11,11 +11,10 @@ var L14_final;
     window.addEventListener("load", start); //Start-Bildschirm wird aufgerufen
     let saveBackgroundData;
     L14_final.ball = []; //Array, um variabel Bälle hinzufügen zu können
-    L14_final.amount = 1;
+    L14_final.amount = 1; //Anzahl Bälle
     let count = 0;
-    L14_final.counter = 0;
+    L14_final.points = 0;
     let isRunning = true;
-    console.log("Punktezahl: " + L14_final.counter);
     //Start Bildschirm
     function start(_event) {
         let canvas;
@@ -32,13 +31,20 @@ var L14_final;
         //Hintergrund
         L14_final.crc2.fillStyle = "#d9d9d9";
         L14_final.crc2.fillRect(0, 0, L14_final.crc2.canvas.width, L14_final.crc2.canvas.height);
+        //grüner Kreis
+        L14_final.crc2.fillStyle = "#008000";
+        L14_final.crc2.beginPath();
+        L14_final.crc2.arc(35, 280, 55, 0, 2 * Math.PI);
+        L14_final.crc2.fill();
         //Startmenü 
         L14_final.crc2.stroke();
         L14_final.crc2.fillStyle = "black";
-        L14_final.crc2.font = "40px Arial";
-        L14_final.crc2.fillText("PONG - THE GAME", 60, 250);
+        L14_final.crc2.font = "55px Arial";
+        L14_final.crc2.fillText("PONG - THE GAME", 50, 300);
         L14_final.crc2.font = "20px Arial";
-        L14_final.crc2.fillText("Klicken Sie um das Spiel zu starten.", 60, 310);
+        L14_final.crc2.fillText("Klicken Sie um das Spiel zu starten.", 140, 360);
+        L14_final.crc2.font = "12px Arial";
+        L14_final.crc2.fillText("© by Jonas Fehrenbach", 460, 688);
     }
     //--------------------------------------------------------------------------   
     //Hinweise zur Bedienung
@@ -58,25 +64,20 @@ var L14_final;
         //Hintergrund
         L14_final.crc2.fillStyle = "#d9d9d9";
         L14_final.crc2.fillRect(0, 0, L14_final.crc2.canvas.width, L14_final.crc2.canvas.height);
-        // Schrift
-        L14_final.crc2.strokeStyle = "#008000";
-        L14_final.crc2.moveTo(13, 80);
-        L14_final.crc2.lineTo(487, 80);
-        L14_final.crc2.stroke();
+        //Hinweis-Text
         L14_final.crc2.fillStyle = "black";
-        L14_final.crc2.font = "40px Arial";
-        L14_final.crc2.textBaseline = "bottom";
-        L14_final.crc2.fillText("PONG - THE GAME", 71, 80);
+        L14_final.crc2.font = "45px Arial";
+        L14_final.crc2.fillText("PONG - THE GAME", 80, 140);
         L14_final.crc2.font = "20px Arial";
-        L14_final.crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 20, 170);
-        L14_final.crc2.fillText("das schwarze Panel mit einem Mausklick ", 20, 200);
-        L14_final.crc2.fillText("in die gewünschte Richtung bewegen. ", 20, 230);
-        L14_final.crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 20, 260);
-        L14_final.crc2.fillText("ist das Spiel verloren. ", 20, 290);
-        L14_final.crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 20, 320);
+        L14_final.crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        L14_final.crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
+        L14_final.crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
+        L14_final.crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
+        L14_final.crc2.fillText("ist das Spiel verloren. ", 80, 350);
+        L14_final.crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 80, 380);
         L14_final.crc2.fillStyle = "#008000";
         L14_final.crc2.font = "30px Arial";
-        L14_final.crc2.fillText("Tippe um das Spiel zu starten.", 20, 420);
+        L14_final.crc2.fillText("Tippe um das Spiel zu starten.", 80, 480);
     }
     ;
     //--------------------------------------------------------------------------   
@@ -98,25 +99,20 @@ var L14_final;
         //Hintergrund
         L14_final.crc2.fillStyle = "#d9d9d9";
         L14_final.crc2.fillRect(0, 0, L14_final.crc2.canvas.width, L14_final.crc2.canvas.height);
-        // Schrift
-        L14_final.crc2.strokeStyle = "#004d00";
-        L14_final.crc2.moveTo(13, 80);
-        L14_final.crc2.lineTo(487, 80);
-        L14_final.crc2.stroke();
+        //Hinweis-Text
         L14_final.crc2.fillStyle = "black";
-        L14_final.crc2.font = "40px Arial";
-        L14_final.crc2.textBaseline = "bottom";
-        L14_final.crc2.fillText("PONG - THE GAME", 71, 80);
+        L14_final.crc2.font = "45px Arial";
+        L14_final.crc2.fillText("PONG - THE GAME", 80, 140);
         L14_final.crc2.font = "20px Arial";
-        L14_final.crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 20, 170);
-        L14_final.crc2.fillText("das schwarze Panel mit einem Mausklick ", 20, 200);
-        L14_final.crc2.fillText("in die gewünschte Richtung bewegen. ", 20, 230);
-        L14_final.crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 20, 260);
-        L14_final.crc2.fillText("ist das Spiel verloren. ", 20, 290);
-        L14_final.crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 20, 320);
+        L14_final.crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        L14_final.crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
+        L14_final.crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
+        L14_final.crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
+        L14_final.crc2.fillText("ist das Spiel verloren. ", 80, 350);
+        L14_final.crc2.fillText("Nach wenigen Sekunden gibt es einen Neustart. ", 80, 380);
         L14_final.crc2.fillStyle = "#008000";
         L14_final.crc2.font = "30px Arial";
-        L14_final.crc2.fillText("Tippe um das Spiel zu starten.", 20, 420);
+        L14_final.crc2.fillText("Tippe um das Spiel zu starten.", 80, 480);
     }
     ;
     //Spiele-Funktionalität
@@ -146,23 +142,27 @@ var L14_final;
     }
     function animate() {
         L14_final.crc2.putImageData(saveBackgroundData, 0, 0);
-        writeCounter();
+        writepoints();
         for (let i = 0; i < L14_final.amount; i++) {
             let s = L14_final.ball[i];
-            updateCounter(i);
+            updatepoints(i);
+            //Im Falle von Game Over, d.h. wenn der Ball den unteren Spielfeldrand verlässt
             if (s.gameOver) {
+                //Zähle bis 100 und starte danach das Spiel neu
                 if (count < 100) {
                     console.log(count);
                     L14_final.b.writeGameOver();
                     isRunning = false;
-                    L14_final.counter = 0;
                     count++;
                 }
                 else {
                     count = 0;
+                    L14_final.points = 0; //Reset der Punkteanzahl
                     L14_final.p = new L14_final.Panel();
                     isRunning = true;
-                    L14_final.ball[i] = new L14_final.MovingBall();
+                    L14_final.ball.splice(0, L14_final.ball.length);
+                    L14_final.ball[0] = new L14_final.MovingBall();
+                    L14_final.amount = 1;
                 }
             }
             else {
@@ -172,26 +172,30 @@ var L14_final;
         L14_final.p.draw();
         window.setTimeout(animate, 20);
     }
-    function updateCounter(_i) {
+    function updatepoints(_i) {
+        //Falls der Ball vom Panel abprallt, dann führe folgendes aus:
         if (L14_final.ball[_i].isHit) {
-            L14_final.counter += 1;
+            L14_final.points += 1;
             L14_final.ball[_i].isHit = false;
-            if (L14_final.counter == 1) {
+            //Entspricht die Punktezahl 5, wird ein neuer Ball hinzugefügt
+            if (L14_final.points == 5) {
                 let m = new L14_final.MovingBall();
                 L14_final.ball.push(m);
                 L14_final.amount += 1;
             }
-            if (L14_final.counter == 7) {
+            //Entspricht die Punktezahl 10, wird ein neuer Ball hinzugefügt
+            if (L14_final.points == 10) {
                 let m = new L14_final.MovingBall();
                 L14_final.ball.push(m);
                 L14_final.amount += 1;
             }
         }
     }
-    function writeCounter() {
+    //Funktion zum Schreiben der Punktezahl auf den Canvas
+    function writepoints() {
         L14_final.crc2.fillStyle = "#ffffff";
-        L14_final.crc2.font = "20px Arial";
-        L14_final.crc2.fillText("Points: " + (L14_final.counter), 10, 25);
+        L14_final.crc2.font = "27px Arial";
+        L14_final.crc2.fillText("Points: " + (L14_final.points), 10, 37);
     }
     function onClick(_event) {
         if (isRunning) {

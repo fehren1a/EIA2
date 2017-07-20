@@ -25,13 +25,14 @@ var L14_final;
                 this.xspeed = -3;
             }
             //Zufällige x- und y-Werte werden für den Ball als Startposition ermittelt
-            this.bx = (Math.random() * 480) + 20;
+            this.bx = (Math.random() * 580) + 20;
             this.by = (Math.random() * 40) + 10;
         }
         update() {
             this.move();
             this.draw();
         }
+        //Zeichnen des Balles
         draw() {
             L14_final.crc2.shadowBlur = 20;
             L14_final.crc2.shadowColor = "black";
@@ -40,6 +41,7 @@ var L14_final;
             L14_final.crc2.arc(this.bx - this.size / 2, this.by, this.size, 0, 2 * Math.PI);
             L14_final.crc2.fill();
         }
+        //Bewegung des Balles
         move() {
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
@@ -58,25 +60,26 @@ var L14_final;
                 this.yspeed = this.yspeed - 0.1;
             }
             //oberer Spielfeldrand
-            if (this.by < 7 && this.yspeed < 0) {
+            if (this.by < 8 && this.yspeed < 0) {
                 this.yspeed = -this.yspeed;
             }
             //unterer Spielfeldrand
-            if (this.by > 593 && this.yspeed > 0) {
+            if (this.by > 692 && this.yspeed > 0) {
                 this.gameOver = true;
             }
             //linker Spielfeldrand
-            if (this.bx < 7 && this.xspeed < 0) {
+            if (this.bx < 8 && this.xspeed < 0) {
                 this.xspeed = -this.xspeed;
             }
             //rechter Spielfeldrand
-            if (this.bx > 493 && this.xspeed > 0) {
+            if (this.bx > 592 && this.xspeed > 0) {
                 this.xspeed = -this.xspeed;
             }
         }
         getGameOver() {
             return this.gameOver;
         }
+        //Zufällige Ballfarbe wird erzeugt
         setRandomColor() {
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }

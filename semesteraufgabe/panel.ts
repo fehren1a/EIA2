@@ -9,13 +9,14 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 namespace L14_final {
     export class Panel {
         p1x: number;
-        p1y: number = 580;
-        pwidth: number = 90;
-        pheight: number = 11;
+        p1y: number;
+        pwidth: number = 90;  //Breite des Panels
+        pheight: number = 11;  //Höhe des Panels
         color: string = "#000000";
 
         constructor() {
-            this.p1x = 205; //Ausgangsposition des Panels
+            this.p1x = 255; //Ausgangsposition des Panels
+            this.p1y = 670; //Ausgangsposition des Panels
         }
 
         draw(): void {

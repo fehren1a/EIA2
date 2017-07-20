@@ -10,11 +10,11 @@ var L14_final;
 (function (L14_final) {
     class Panel {
         constructor() {
-            this.p1y = 580;
-            this.pwidth = 90;
-            this.pheight = 11;
+            this.pwidth = 90; //Breite des Panels
+            this.pheight = 11; //Höhe des Panels
             this.color = "#000000";
-            this.p1x = 205; //Ausgangsposition des Panels
+            this.p1x = 255; //Ausgangsposition des Panels
+            this.p1y = 670; //Ausgangsposition des Panels
         }
         draw() {
             //Zeichnen des Panels

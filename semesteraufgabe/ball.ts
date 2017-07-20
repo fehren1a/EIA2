@@ -8,10 +8,10 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 namespace L14_final {
     export class MovingBall {
-        bx: number; //x-Wert des Balles (zu Beginn bei 125)
-        by: number;  //y-Wert des Balles (zu Beginn bei 10)
+        bx: number; //x-Wert des Balles
+        by: number;  //y-Wert des Balles
         size: number = 10; //Größe des Balles
-        xspeed: number = 3;
+        xspeed: number = 3; 
         yspeed: number = 3;
         color: string;
         gameOver: boolean;
@@ -31,7 +31,7 @@ namespace L14_final {
             }
 
             //Zufällige x- und y-Werte werden für den Ball als Startposition ermittelt
-            this.bx = (Math.random() * 480) + 20;
+            this.bx = (Math.random() * 580) + 20;
             this.by = (Math.random() * 40) + 10;
         }
 
@@ -40,6 +40,7 @@ namespace L14_final {
             this.draw();
         }
 
+        //Zeichnen des Balles
         draw(): void {
             crc2.shadowBlur = 20;
             crc2.shadowColor = "black";
@@ -49,6 +50,7 @@ namespace L14_final {
             crc2.fill();
         }
 
+        //Bewegung des Balles
         move(): void {
             //Zu den x- und y-Koordinaten wird die Bewegung bzw. Geschwindigkeit dazugerechnet    
             this.bx += this.xspeed;
@@ -70,29 +72,31 @@ namespace L14_final {
             }
 
             //oberer Spielfeldrand
-            if (this.by < 7 && this.yspeed < 0) {
+            if (this.by < 8 && this.yspeed < 0) {
                 this.yspeed = -this.yspeed;
             }
 
             //unterer Spielfeldrand
-            if (this.by > 593 && this.yspeed > 0) {
+            if (this.by > 692 && this.yspeed > 0) {
                 this.gameOver = true;
             }
 
             //linker Spielfeldrand
-            if (this.bx < 7 && this.xspeed < 0) {
+            if (this.bx < 8 && this.xspeed < 0) {
                 this.xspeed = -this.xspeed;
             }
 
             //rechter Spielfeldrand
-            if (this.bx > 493 && this.xspeed > 0) {
+            if (this.bx > 592 && this.xspeed > 0) {
                 this.xspeed = -this.xspeed;
             }
         }
+        
         getGameOver(): boolean {
             return this.gameOver;
         }
 
+        //Zufällige Ballfarbe wird erzeugt
         setRandomColor(): void {
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
         }

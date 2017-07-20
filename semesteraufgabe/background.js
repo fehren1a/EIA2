@@ -15,16 +15,16 @@ var L14_final;
             L14_final.crc2.fillRect(0, 0, L14_final.crc2.canvas.width, L14_final.crc2.canvas.height);
             //vetical line
             L14_final.crc2.fillStyle = "#ffffff"; //weiß
-            L14_final.crc2.fillRect(246, 0, 8, L14_final.crc2.canvas.height);
+            L14_final.crc2.fillRect(296, 0, 8, L14_final.crc2.canvas.height);
             //horizontal line
             L14_final.crc2.fillStyle = "gray";
-            L14_final.crc2.fillRect(0, 296, L14_final.crc2.canvas.width, 8);
+            L14_final.crc2.fillRect(0, 346, L14_final.crc2.canvas.width, 8);
         }
         //"Game Over" wird auf das Spielfeld geschrieben
         writeGameOver() {
             L14_final.crc2.fillStyle = "#ffffff";
             L14_final.crc2.font = "40px Arial";
-            L14_final.crc2.fillText("Game Over", 270, 285);
+            L14_final.crc2.fillText("Game Over", 340, 335);
         }
     }
     L14_final.Background = Background;
