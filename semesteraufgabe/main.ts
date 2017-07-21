@@ -82,7 +82,7 @@ namespace L14_final {
         crc2.font = "45px Arial";
         crc2.fillText("PONG - THE GAME", 80, 140);
         crc2.font = "20px Arial";
-        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        crc2.fillText("Halten Sie den Ball im Spiel, indem Sie ", 80, 230);
         crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
         crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
         crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
@@ -120,7 +120,7 @@ namespace L14_final {
         crc2.font = "45px Arial";
         crc2.fillText("PONG - THE GAME", 80, 140);
         crc2.font = "20px Arial";
-        crc2.fillText("Halte Sie den Ball im Spiel, indem Sie ", 80, 230);
+        crc2.fillText("Halten Sie den Ball im Spiel, indem Sie ", 80, 230);
         crc2.fillText("das schwarze Panel mit einem Mausklick ", 80, 260);
         crc2.fillText("in die gewünschte Richtung bewegen. ", 80, 290);
         crc2.fillText("Verlässt der Ball den unteren Spielfeldrand, ", 80, 320);
